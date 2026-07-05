@@ -1289,7 +1289,6 @@ function addMsg(nick, color, text) {
   S.msgTotal++;
   document.getElementById('mcnt').textContent = S.msgTotal;
   renderChatMsg(nick, color, text);
-  handleSongCommand(nick, text);
   routeToGame(nick, text);
 }
 
