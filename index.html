@@ -2360,7 +2360,7 @@ function ffUpdLb() {
 // ════════════════════════════════════════════════════════
 // GENERIC SPEED GAME ENGINE (Математика, Слово наоборот, Анаграмма)
 // ════════════════════════════════════════════════════════
-function createSpeedGame(key, genQuestion, normalizeGuess) {
+function createSpeedGame(key, genQuestion, normalizeGuess, autoNextMs) {
   const G = { roundsDone:0, active:false, display:'', answer:'', started:0, wins:{}, maxRounds:10, timer:30 };
 
   function start() {
@@ -2443,7 +2443,11 @@ function createSpeedGame(key, genQuestion, normalizeGuess) {
       document.getElementById(key+'-sub').textContent = '✅ ' + nick + ' ответил первым!';
       document.getElementById(key+'-winner-area').style.display = '';
       document.getElementById(key+'-next').style.display = '';
-      if (G.maxRounds !== Infinity && G.roundsDone >= G.maxRounds) { delay(finish, 3000); }
+      if (G.maxRounds !== Infinity && G.roundsDone >= G.maxRounds) {
+        delay(finish, 3000);
+      } else if (autoNextMs) {
+        delay(next, autoNextMs);
+      }
       updStats();
       updLb();
       sndWin();
@@ -2489,7 +2493,7 @@ const MATH_GAME = createSpeedGame('math', () => {
   else if (op === '−') { a = rnd(20,99); b = rnd(1,a-1); ans = a - b; }
   else { a = rnd(2,15); b = rnd(2,15); ans = a * b; }
   return { display: `${a} ${op} ${b} = ?`, answer: String(ans) };
-}, text => text.trim().replace(/\s+/g,'').replace(',', '.'));
+}, text => text.trim().replace(/\s+/g,'').replace(',', '.'), 2500);
 
 // GAME 5 — REVERSE (слово наоборот)
 const RWORDS = [
@@ -2573,7 +2577,7 @@ const RWORDS_POOL = makePool(RWORDS);
 const REVERSE_GAME = createSpeedGame('reverse', () => {
   const w = RWORDS_POOL.next();
   return { display: w.split('').reverse().join(''), answer: w };
-}, text => text.trim().toUpperCase().replace(/\s+/g,''));
+}, text => text.trim().toUpperCase().replace(/\s+/g,''), 2500);
 
 // GAME 6 — ANAGRAM
 function scrambleWord(word) {
@@ -2586,7 +2590,7 @@ const ANAGRAM_POOL = makePool(RWORDS);
 const ANAGRAM_GAME = createSpeedGame('anagram', () => {
   const w = ANAGRAM_POOL.next();
   return { display: scrambleWord(w).split('').join(' '), answer: w };
-}, text => text.trim().toUpperCase().replace(/\s+/g,''));
+}, text => text.trim().toUpperCase().replace(/\s+/g,''), 2500);
 
 // ════════════════════════════════════════════════════════
 // GAME 7 — DESCRIBE (Опиши)
