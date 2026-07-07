@@ -25,7 +25,8 @@ body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;opac
 /* HEADER */
 header{background:rgba(7,7,16,.9);backdrop-filter:blur(24px);border-bottom:1px solid rgba(255,255,255,.06);height:62px;display:flex;align-items:center;justify-content:space-between;padding:0 22px;position:sticky;top:0;z-index:200;box-shadow:0 1px 0 rgba(255,106,0,.08),0 8px 40px rgba(0,0,0,.4);gap:14px;}
 .logo{font-size:20px;font-weight:900;letter-spacing:-0.8px;background:linear-gradient(100deg,var(--o) 20%,var(--yellow) 80%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;flex-shrink:0;display:flex;align-items:center;gap:7px;}
-.logo-icon{display:flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,var(--o),var(--od));box-shadow:0 0 20px rgba(255,106,0,.35),0 2px 8px rgba(0,0,0,.4);font-size:17px;-webkit-text-fill-color:initial;flex-shrink:0;}
+.logo-icon{display:flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,var(--o),var(--od));box-shadow:0 0 20px rgba(255,106,0,.35),0 2px 8px rgba(0,0,0,.4);font-size:17px;-webkit-text-fill-color:initial;flex-shrink:0;overflow:hidden;}
+.logo-icon img{width:100%;height:100%;object-fit:cover;border-radius:10px;}
 .hbar{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
 .conn-pill{display:flex;align-items:center;gap:8px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:var(--rl);padding:6px 10px 6px 14px;transition:border-color .25s,background .25s;}
 .conn-pill:focus-within{border-color:rgba(255,106,0,.5);background:rgba(255,106,0,.06);}
@@ -360,6 +361,10 @@ header{background:rgba(7,7,16,.9);backdrop-filter:blur(24px);border-bottom:1px s
 .row{display:flex;gap:8px;align-items:center}
 .divider{height:1px;background:rgba(255,255,255,.05);margin:2px 0}
 .info-box{background:var(--bg2);border:1px solid rgba(255,255,255,.06);border-radius:14px;padding:16px 20px;font-size:13px;color:var(--t2);line-height:1.75;}
+.twitch-box{background:linear-gradient(120deg,rgba(145,70,255,.1),rgba(145,70,255,.03));border:1px solid rgba(145,70,255,.3);border-radius:14px;padding:16px 20px;font-size:13px;color:var(--t2);line-height:1.75;display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-top:14px;}
+.twitch-box .tw-icon{width:38px;height:38px;flex-shrink:0;display:flex;align-items:center;justify-content:center;background:rgba(145,70,255,.15);border:1px solid rgba(145,70,255,.35);border-radius:10px;font-size:19px;}
+.twitch-box a{color:#b794ff;font-weight:700;text-decoration:none;border-bottom:1px solid rgba(183,148,255,.4);transition:all .18s;}
+.twitch-box a:hover{color:#d6bbff;border-color:#d6bbff;}
 .tag{display:inline-block;border-radius:7px;padding:2px 9px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.3px;}
 .footer-note{text-align:center;color:var(--t3);font-size:11px;padding:16px 0 0}
 .section-head{display:flex;align-items:center;gap:8px;font-size:10px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:var(--t2);margin-bottom:4px;}
@@ -384,7 +389,7 @@ header{background:rgba(7,7,16,.9);backdrop-filter:blur(24px);border-bottom:1px s
 <body>
 
 <header>
-  <div class="logo"><span class="logo-icon">🎮</span> LeimGame</div>
+  <div class="logo"><span class="logo-icon"><img src="https://i.ibb.co/39fDqq1L/5b21e0ee-7e8c-474e-b6bb-3743eb2103ed-1.png" alt="LeimGame logo"/></span> LeimGame</div>
   <div class="hbar">
     <div class="conn-pill">
       <div class="dot" id="dot"></div>
@@ -407,47 +412,47 @@ header{background:rgba(7,7,16,.9);backdrop-filter:blur(24px);border-bottom:1px s
 
       <div class="sb-label">Угадай</div>
       <div class="gc" id="gc-author" onclick="go('author')">
-        <div class="gc-top"><div class="gc-icon">🎯</div><div class="gc-name">Угадай автора</div><div class="gc-badge">ХИТ</div></div>
+        <div class="gc-top"><div class="gc-icon">🕵️</div><div class="gc-name">Угадай автора</div><div class="gc-badge">ХИТ</div></div>
         <div class="gc-desc">Выбери из 4 ников кто написал сообщение</div>
       </div>
       <div class="gc" id="gc-fill" onclick="go('fill')">
-        <div class="gc-top"><div class="gc-icon">🔲</div><div class="gc-name">Пропущенное слово</div><div class="gc-badge new">НОВОЕ</div></div>
+        <div class="gc-top"><div class="gc-icon">🧩</div><div class="gc-name">Пропущенное слово</div><div class="gc-badge new">НОВОЕ</div></div>
         <div class="gc-desc">Угадай слово пропущенное в сообщении из чата</div>
       </div>
 
       <div class="sb-label">Скорость</div>
       <div class="gc" id="gc-ff" onclick="go('ff')">
-        <div class="gc-top"><div class="gc-icon">⚡</div><div class="gc-name">Быстрее всех</div><div class="gc-badge speed">СКОРОСТЬ</div></div>
+        <div class="gc-top"><div class="gc-icon">🏁</div><div class="gc-name">Быстрее всех</div><div class="gc-badge speed">СКОРОСТЬ</div></div>
         <div class="gc-desc">Первый кто напишет слово в чат — победитель</div>
       </div>
       <div class="gc" id="gc-math" onclick="go('math')">
-        <div class="gc-top"><div class="gc-icon">➗</div><div class="gc-name">Математика</div><div class="gc-badge speed">СКОРОСТЬ</div></div>
+        <div class="gc-top"><div class="gc-icon">🧮</div><div class="gc-name">Математика</div><div class="gc-badge speed">СКОРОСТЬ</div></div>
         <div class="gc-desc">Реши пример быстрее всех и напиши ответ в чат</div>
       </div>
       <div class="gc" id="gc-reverse" onclick="go('reverse')">
-        <div class="gc-top"><div class="gc-icon">🔃</div><div class="gc-name">Слово наоборот</div><div class="gc-badge speed">СКОРОСТЬ</div></div>
+        <div class="gc-top"><div class="gc-icon">🪞</div><div class="gc-name">Слово наоборот</div><div class="gc-badge speed">СКОРОСТЬ</div></div>
         <div class="gc-desc">Слово написано задом наперёд — угадай его</div>
       </div>
       <div class="gc" id="gc-anagram" onclick="go('anagram')">
-        <div class="gc-top"><div class="gc-icon">🔤</div><div class="gc-name">Анаграмма</div><div class="gc-badge speed">СКОРОСТЬ</div></div>
+        <div class="gc-top"><div class="gc-icon">🔀</div><div class="gc-name">Анаграмма</div><div class="gc-badge speed">СКОРОСТЬ</div></div>
         <div class="gc-desc">Буквы перемешаны — собери исходное слово</div>
       </div>
 
       <div class="sb-label">Чат вместе</div>
       <div class="gc" id="gc-describe" onclick="go('describe')">
-        <div class="gc-top"><div class="gc-icon">📝</div><div class="gc-name">Опиши</div></div>
+        <div class="gc-top"><div class="gc-icon">💬</div><div class="gc-name">Опиши</div></div>
         <div class="gc-desc">Чат отвечает на тему одним предложением</div>
       </div>
       <div class="gc" id="gc-chain" onclick="go('chain')">
-        <div class="gc-top"><div class="gc-icon">🔗</div><div class="gc-name">Слова в цепочку</div></div>
+        <div class="gc-top"><div class="gc-icon">⛓️</div><div class="gc-name">Слова в цепочку</div></div>
         <div class="gc-desc">Слово должно начинаться на последнюю букву</div>
       </div>
       <div class="gc" id="gc-city" onclick="go('city')">
-        <div class="gc-top"><div class="gc-icon">🏙️</div><div class="gc-name">Город подписчиков</div><div class="gc-badge city">СТРОЙКА</div></div>
+        <div class="gc-top"><div class="gc-icon">🏗️</div><div class="gc-name">Город подписчиков</div><div class="gc-badge city">СТРОЙКА</div></div>
         <div class="gc-desc">Каждый зритель строит свой квартал в общем городе</div>
       </div>
       <div class="gc" id="gc-mono" onclick="go('mono')">
-        <div class="gc-top"><div class="gc-icon">🎲</div><div class="gc-name">Монополия</div><div class="gc-badge mono">ИГРА</div></div>
+        <div class="gc-top"><div class="gc-icon">🎩</div><div class="gc-name">Монополия</div><div class="gc-badge mono">ИГРА</div></div>
         <div class="gc-desc">Покупай собственность и разоряй чат командами</div>
       </div>
 
@@ -483,21 +488,28 @@ header{background:rgba(7,7,16,.9);backdrop-filter:blur(24px);border-bottom:1px s
         </div>
       </div>
       <div class="chips">
-        <span class="chip">🎯 Угадай автора</span>
-        <span class="chip">🔲 Пропущенное слово</span>
+        <span class="chip">🕵️ Угадай автора</span>
+        <span class="chip">🧩 Пропущенное слово</span>
 
-        <span class="chip">⚡ Быстрее всех</span>
-        <span class="chip">➗ Математика</span>
-        <span class="chip">🔃 Наоборот</span>
-        <span class="chip">🔤 Анаграмма</span>
-        <span class="chip">📝 Опиши</span>
-        <span class="chip">🔗 Цепочка</span>
-        <span class="chip">🏙️ Город</span>
-        <span class="chip">🎲 Монополия</span>
+        <span class="chip">🏁 Быстрее всех</span>
+        <span class="chip">🧮 Математика</span>
+        <span class="chip">🪞 Наоборот</span>
+        <span class="chip">🔀 Анаграмма</span>
+        <span class="chip">💬 Опиши</span>
+        <span class="chip">⛓️ Цепочка</span>
+        <span class="chip">🏗️ Город</span>
+        <span class="chip">🎩 Монополия</span>
         <span class="chip">🎭 Анализатор</span>
       </div>
       <div class="info-box">
         <strong style="color:var(--o)">Нет Twitch канала?</strong> Нажми <strong style="color:var(--t)">🎭 Демо</strong> вверху — загрузятся тестовые сообщения и все игры будут работать.
+      </div>
+      <div class="twitch-box">
+        <div class="tw-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="#b794ff"><path d="M11.571 4.714h1.715v5.143H11.57zm4.715 0H18v5.143h-1.714zM6 0 1.714 4.286v15.428h5.143V24l4.286-4.286h3.428L21.429 12.857V0zm13.714 12L16 15.714h-3.429L9.857 18.43V15.714H5.571V1.714h14.143Z"/></svg>
+        </div>
+        <div><strong style="color:#d6bbff">Наш Twitch-бот Leimtwitch</strong> — бот для стримеров Twitch, развлекает зрителей прямо в чате.</div>
+        <a class="btn btn-purple btn-sm btn-icon" href="https://www.twitch.tv/leimtwitch" target="_blank" rel="noopener noreferrer" style="text-decoration:none;margin-left:auto">🟣 Перейти на Twitch</a>
       </div>
     </div>
 
@@ -505,7 +517,7 @@ header{background:rgba(7,7,16,.9);backdrop-filter:blur(24px);border-bottom:1px s
     <div class="view" id="v-author">
       <div class="game-hd">
         <div class="game-hd-l">
-          <h2>🎯 Угадай автора</h2>
+          <h2>🕵️ Угадай автора</h2>
           <p>Читай сообщение на экране и выбирай из 4 вариантов кто его написал — стример кликает на кнопку</p>
         </div>
         <div class="game-hd-r">
@@ -565,7 +577,7 @@ header{background:rgba(7,7,16,.9);backdrop-filter:blur(24px);border-bottom:1px s
     <div class="view" id="v-fill">
       <div class="game-hd">
         <div class="game-hd-l">
-          <h2>🔲 Пропущенное слово</h2>
+          <h2>🧩 Пропущенное слово</h2>
           <p>Сообщение чаттера с пропущенным словом — стример выбирает правильный вариант из 4</p>
         </div>
         <div class="game-hd-r">
@@ -625,7 +637,7 @@ header{background:rgba(7,7,16,.9);backdrop-filter:blur(24px);border-bottom:1px s
     <div class="view" id="v-ff">
       <div class="game-hd">
         <div class="game-hd-l">
-          <h2>⚡ Быстрее всех</h2>
+          <h2>🏁 Быстрее всех</h2>
           <p>Показываем слово — первый кто напишет <strong>это же слово</strong> в чат побеждает!</p>
         </div>
         <div class="game-hd-r">
@@ -695,7 +707,7 @@ header{background:rgba(7,7,16,.9);backdrop-filter:blur(24px);border-bottom:1px s
     <div class="view" id="v-math">
       <div class="game-hd">
         <div class="game-hd-l">
-          <h2>➗ Математика</h2>
+          <h2>🧮 Математика</h2>
           <p>Показываем пример — первый кто напишет <strong>верный ответ</strong> в чат побеждает!</p>
         </div>
         <div class="game-hd-r">
@@ -764,7 +776,7 @@ header{background:rgba(7,7,16,.9);backdrop-filter:blur(24px);border-bottom:1px s
     <div class="view" id="v-reverse">
       <div class="game-hd">
         <div class="game-hd-l">
-          <h2>🔃 Слово наоборот</h2>
+          <h2>🪞 Слово наоборот</h2>
           <p>Слово написано задом наперёд — первый кто угадает оригинал побеждает!</p>
         </div>
         <div class="game-hd-r">
@@ -833,7 +845,7 @@ header{background:rgba(7,7,16,.9);backdrop-filter:blur(24px);border-bottom:1px s
     <div class="view" id="v-anagram">
       <div class="game-hd">
         <div class="game-hd-l">
-          <h2>🔤 Анаграмма</h2>
+          <h2>🔀 Анаграмма</h2>
           <p>Буквы перемешаны — первый кто соберёт исходное слово побеждает!</p>
         </div>
         <div class="game-hd-r">
@@ -901,7 +913,7 @@ header{background:rgba(7,7,16,.9);backdrop-filter:blur(24px);border-bottom:1px s
     <div class="view" id="v-describe">
       <div class="game-hd">
         <div class="game-hd-l">
-          <h2>📝 Опиши</h2>
+          <h2>💬 Опиши</h2>
           <p>Чат одним предложением отвечает на тему — выбери готовую или задай свою</p>
         </div>
         <div class="game-hd-r">
@@ -956,7 +968,7 @@ header{background:rgba(7,7,16,.9);backdrop-filter:blur(24px);border-bottom:1px s
     <div class="view" id="v-chain">
       <div class="game-hd">
         <div class="game-hd-l">
-          <h2>🔗 Слова в цепочку</h2>
+          <h2>⛓️ Слова в цепочку</h2>
           <p>Пишите в чат слово начинающееся на указанную букву — цепочку не рвать!</p>
         </div>
         <div class="game-hd-r">
@@ -990,7 +1002,7 @@ header{background:rgba(7,7,16,.9);backdrop-filter:blur(24px);border-bottom:1px s
     <div class="view" id="v-city">
       <div class="game-hd">
         <div class="game-hd-l">
-          <h2>🏙️ Город подписчиков</h2>
+          <h2>🏗️ Город подписчиков</h2>
           <p>Каждый зритель строит свой квартал — пишите команды в чат и развивайте город вместе!</p>
         </div>
         <div class="game-hd-r">
@@ -1043,7 +1055,7 @@ header{background:rgba(7,7,16,.9);backdrop-filter:blur(24px);border-bottom:1px s
     <div class="view" id="v-mono">
       <div class="game-hd">
         <div class="game-hd-l">
-          <h2>🎲 Монополия</h2>
+          <h2>🎩 Монополия</h2>
           <p>Чат бросает кубики и покупает собственность — разори всех и победи!</p>
         </div>
         <div class="game-hd-r">
